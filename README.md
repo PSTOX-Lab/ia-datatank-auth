@@ -118,7 +118,7 @@ provider does not have the code to register new users
  * In Setup, go to Named Credentials
  * Click in the dropdown button labeled _New_, select _New Legacy_
  * Give it a descriptive label, let Salesforce determine the name
- * Enter the URL provided by iA for their API
+ * Enter the URL provided by iA for their API, make sure that to add the path _/api/v1/_ is specified in the URL you enter
  * Leave Certificate blank
  * In Identity Type, chose _Per User_
  * In Authentication Protocol, select _OAuth 2.0_
