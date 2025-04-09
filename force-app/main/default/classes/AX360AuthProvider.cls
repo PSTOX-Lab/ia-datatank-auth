@@ -112,7 +112,6 @@ public with sharing class AX360AuthProvider extends Auth.AuthProviderPluginClass
         Map<String, String> header = new Map<String, String>{
                 'alg'=> 'RS256',
                 'x5t#S256'=> authProviderConfiguration.get(CERTIFICATE_THUMBPRINT),
-                // 'kid' => 'PoVKeirIOvmTyLQ9G9BenBwos7k',
                 'typ'=> 'JWT'
         };
         String headerJson = JSON.serialize(header);
