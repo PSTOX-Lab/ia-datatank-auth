@@ -26,19 +26,19 @@ Because iA's *.pfx file (a pkcs12 file) doesn't have a password, and because jav
 not protected by a password. We need to export and then re-import the certificate and private key into a password
 protected pkcs12 file.
 
-First, extract the certificate and private key into a PEM encoded file:
+First, extract the certificate and private key into a PEM encoded file, when asked for a password, just hit _Enter_:
 
 `openssl pkcs12 -in <pfx file name>.pfx -out certificate-and-key.pem -noenc`
 
 Then, import the key and certificate into a new pkcs12 file, making sure to set a password when prompted. The password
 doesn't need to be secure because this file will only be used for the conversion to JKS and it can be deleted after
-the conversion.
+the conversion. Also, keep the alias you set with the name parameter, you'll need it in the next step.
 
-`openssl pkcs12 -export -in certificate-and-key.pem -out certificate-and-key.p12 -name datatank`
+`openssl pkcs12 -export -in certificate-and-key.pem -out certificate-and-key.p12 -name <alias>`
 
 The final step is to import the pkcs12 file in a jks file
 
-`keytool -importkeystore -destkeystore certificate-and-key.jks -srckeystore certificate-and-key.p12 -srcstoretype PKCS12 -alias datatank`
+`keytool -importkeystore -destkeystore certificate-and-key.jks -srckeystore certificate-and-key.p12 -srcstoretype PKCS12 -alias <alias>`
 
 Before finalising this step, we need to calculate the thumbprint of this certificate. First, export the certificate in
 a DER encoded file.
@@ -153,7 +153,7 @@ selected in _Named Credential_
 Http http = new Http();
 HttpRequest req = new HttpRequest();
 req.setMethod('GET');
-req.setEndpoint('callout:datatank/accounts/repcodes');
+req.setEndpoint('callout:<Your_Name_Credentals>/accounts/repcodes');
 HttpResponse resp = http.send(req);
 System.debug(resp.getStatus());
 System.debug(resp.getBody());
