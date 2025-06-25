@@ -3,5 +3,5 @@
     <description>Configuration parameters for the authentication to iA&apos;s AX-360 APIs</description>
     <label>AX360 Authentication Setting</label>
     <pluralLabel>AX360 Authentication Settings</pluralLabel>
-    <visibility>Protected</visibility>
+    <visibility>Public</visibility>
 </CustomObject>
